@@ -754,7 +754,13 @@ where
 /// see zeroes after this point.
 #[inline(always)]
 fn atomic_fence() {
+    #[cfg(not(target_arch = "nvptx64"))]
     atomic::compiler_fence(atomic::Ordering::SeqCst);
+    
+    #[cfg(target_arch = "nvptx64")]
+    {
+        // NVPTX64 doesn't support atomic fences
+    }
 }
 
 /// Perform a volatile write to the destination
