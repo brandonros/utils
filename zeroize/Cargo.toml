@@ -23,7 +23,7 @@ serde = { version = "1.0", default-features = false, optional = true }
 zeroize_derive = { version = "1.3", path = "../zeroize_derive", optional = true }
 
 [features]
-default = ["alloc", "atomic-fence"]
+default = ["alloc"]
 alloc = []
 atomic-fence = []
 std = ["alloc"]
